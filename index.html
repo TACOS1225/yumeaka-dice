@@ -1,0 +1,50 @@
+<html>
+    <body>
+        <div id="画面"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script> 
+        <script>
+            //ここから
+            let 回転中 = true
+            const シーン = new THREE.Scene()
+            const カメラ = new THREE.PerspectiveCamera( 65, 4/3, 1, 1000 );
+カメラ.position.z = 600;  
+const ライト = new THREE.DirectionalLight( 0xffffff, 3 ); //平行光源（色、強度）
+ライト.position.set(0,0,3);
+シーン.add( ライト );
+const レンダラー = new THREE.WebGLRenderer();
+レンダラー.setSize( 640, 480 );
+レンダラー.setClearColor(new THREE.Color('black'));//背景色の設定
+画面.appendChild( レンダラー.domElement );
+
+const モデル = new THREE.CubeGeometry(200,200,200);
+const テクスチャ = new THREE.TextureLoader();
+const マテリアル = [
+    new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/1.png' )}),
+    new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/2.png' )}),
+    new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/3.png' )}),
+    new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/4.png' )}),
+    new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/5.png' )}),
+    new THREE.MeshBasicMaterial({map: テクスチャ.load( 'img/6.png' )})
+];
+const オブジェクト = new THREE.Mesh( モデル, マテリアル );
+シーン.add( オブジェクト );
+function update() {
+    
+    //ここから
+  
+if (回転中) {
+    //回転させる
+    オブジェクト.rotation.x += 0.1;
+オブジェクト.rotation.y += 0.1; 
+}
+    
+    //ここまで
+    
+    requestAnimationFrame( update );
+    レンダラー.render( シーン, カメラ );
+};
+update();
+            //ここまで
+        </script>
+    </body>
+</html>
