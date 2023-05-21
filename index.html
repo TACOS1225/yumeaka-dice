@@ -1,10 +1,16 @@
 <html>
     <body>
         <div id="画面"></div>
+        <button onclick="ボタンがクリックされた()">サイコロを振る</button>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script> 
         <script>
             //ここから
+            const 円周率 = Math.PI
             let 回転中 = true
+            let 投げ上げ中
+let 速度
+
+           
             const シーン = new THREE.Scene()
             const カメラ = new THREE.PerspectiveCamera( 65, 4/3, 1, 1000 );
 カメラ.position.z = 600;  
@@ -28,8 +34,42 @@ const マテリアル = [
 ];
 const オブジェクト = new THREE.Mesh( モデル, マテリアル );
 シーン.add( オブジェクト );
+function ボタンがクリックされた() {
+                if (回転中) {
+                    回転中 = false
+                    投げ上げ中 = true
+速度 = 20
+const サイコロの目 = Math.floor(Math.random*6) + 1
+switch (サイコロの目) {
+    case 1:
+        
+        break;
+        case 2:
+        
+        break;
+        case 3:
+        
+        break;
+        case 4:
+        
+        break;
+        case 5:
+        
+        break;
+        case 6:
+        
+        break;
+        
+        
+
+   
+}
+                }else {
+                    回転中 = true
+                }
+            }
 function update() {
-    
+
     //ここから
   
 if (回転中) {
@@ -37,7 +77,13 @@ if (回転中) {
     オブジェクト.rotation.x += 0.1;
 オブジェクト.rotation.y += 0.1; 
 }
-    
+if (投げ上げ中) {
+    オブジェクト.position.y += 速度;
+    速度 -=0.1
+    if (速度 <= -20) {
+        投げ上げ中 = false
+    }
+}
     //ここまで
     
     requestAnimationFrame( update );
