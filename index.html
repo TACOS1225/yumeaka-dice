@@ -38,7 +38,7 @@ function ボタンがクリックされた() {
                 if (回転中) {
                     回転中 = false
                     投げ上げ中 = true
-速度 = 20
+速度 = 35
 const サイコロの目 = Math.floor(Math.random*6) + 1
 switch (サイコロの目) {
     case 1:
@@ -79,8 +79,8 @@ if (回転中) {
 }
 if (投げ上げ中) {
     オブジェクト.position.y += 速度;
-    速度 -=0.1
-    if (速度 <= -20) {
+    速度 -=1
+    if (速度 <= -35) {
         投げ上げ中 = false
     }
 }
