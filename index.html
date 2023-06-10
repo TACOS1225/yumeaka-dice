@@ -5,6 +5,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/92/three.min.js"></script> 
         <script>
             //ここから
+            let サイコロの目
             const 円周率 = Math.PI
             let 回転中 = true
             let 投げ上げ中
@@ -36,10 +37,10 @@ const オブジェクト = new THREE.Mesh( モデル, マテリアル );
 シーン.add( オブジェクト );
 function ボタンがクリックされた() {
                 if (回転中) {
-                    回転中 = false
+                   
                     投げ上げ中 = true
 速度 = 35
-const サイコロの目 = Math.floor(Math.random()*6) + 1
+サイコロの目 = Math.floor(Math.random()*6) + 1
 
                 }else {
                     回転中 = true
@@ -59,6 +60,7 @@ if (投げ上げ中) {
     オブジェクト.position.y += 速度;    
     速度 -=1
     if(速度<=0){
+        回転中 = false
         switch (サイコロの目) {
     case 1:
     オブジェクト.rotation.x=0
