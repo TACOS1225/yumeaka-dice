@@ -40,30 +40,7 @@ function ボタンがクリックされた() {
                     投げ上げ中 = true
 速度 = 35
 const サイコロの目 = Math.floor(Math.random*6) + 1
-switch (サイコロの目) {
-    case 1:
-        
-        break;
-        case 2:
-        
-        break;
-        case 3:
-        
-        break;
-        case 4:
-        
-        break;
-        case 5:
-        
-        break;
-        case 6:
-        
-        break;
-        
-        
 
-   
-}
                 }else {
                     回転中 = true
                 }
@@ -78,8 +55,46 @@ if (回転中) {
 オブジェクト.rotation.y += 0.1; 
 }
 if (投げ上げ中) {
-    オブジェクト.position.y += 速度;
+    オブジェクト.position.y += 速度;    
     速度 -=1
+    if(速度<=0){
+        switch (サイコロの目) {
+    case 1:
+    オブジェクト.rotation.x=0
+    オブジェクト.rotation.y=円周率 / -2
+        
+        break;
+        case 2:
+        オブジェクト.rotation.x=0
+        オブジェクト.rotation.y=円周率 / 2
+
+        break;
+        case 3:
+        オブジェクト.rotation.x=円周率 / 2
+        オブジェクト.rotation.y=0
+        
+        break;
+        case 4:
+        オブジェクト.rotation.x=円周率 / -2
+        オブジェクト.rotation.y=0
+        
+        break;
+        case 5:
+        オブジェクト.rotation.x=0
+        オブジェクト.rotation.y=0
+        
+        break;
+        case 6:
+        オブジェクト.rotation.x=円周率
+        オブジェクト.rotation.y=0
+        
+        break;
+        
+        
+
+   
+}
+    }
     if (速度 <= -35) {
         投げ上げ中 = false
     }
